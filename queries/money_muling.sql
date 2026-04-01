@@ -1,7 +1,9 @@
  -- Detects money muling pattern:
 -- User receives money (credit) and sends it out (debit)
 -- within 15 minutes with less than 10% amount difference
- 
+-- This behavior is commonly associated with mule accounts used to move funds quickly.
+
+
  SELECT DISTINCT t1.user_id as mule_user, t1.txn_amount AS credit_amount, t2.txn_amount AS debit_amount, 
  TIMESTAMPDIFF(MINUTE, t1.txn_time, t2.txn_time) AS time_diff_minutes
  FROM transactions as t1
