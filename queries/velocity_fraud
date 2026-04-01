@@ -1,0 +1,14 @@
+-- Detects Velocity Fraud pattern:
+-- Identifies users with 3 or more transactions within a 5-minute window.
+-- Such rapid transaction frequency may indicate fraudulent or automated behavior.
+
+SELECT 
+    t1.user_id,
+    t1.txn_time AS base_time,
+    COUNT(DISTINCT t2.txn_id) AS txn_count_in_5_min
+FROM transactions t1
+JOIN transactions t2
+  ON t1.user_id = t2.user_id
+  AND ABS(TIMESTAMPDIFF(MINUTE, t1.txn_time, t2.txn_time)) <= 5
+GROUP BY t1.user_id, t1.txn_time
+HAVING COUNT(DISTINCT t2.txn_id) >= 3;
