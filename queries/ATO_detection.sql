@@ -1,7 +1,7 @@
 -- Detects Account Takeover (ATO) pattern:
--- Identifies users who log in from a different device or location
--- within a short time span (1 hour), followed by a debit transaction.
--- This behavior may indicate unauthorized access to the account.
+-- Flags users with rapid consecutive logins from different devices or locations
+-- within 1 hour, followed by a debit transaction.
+-- Such behavior is commonly associated with compromised accounts and fraudulent activity.
   
   WITH base as (SELECT l1.user_id, l1.location as first_location, l1.device as first_device, l1.login_time as first_login,
   l2.location as second_location, l2.device as second_device, l2.login_time as second_login
