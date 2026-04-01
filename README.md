@@ -1,7 +1,9 @@
-# Fraud Detection Analysis using SQL
+# SQL-Based Fraud Detection System
 
 ## 📌 Overview
 This project simulates a transaction monitoring system used in financial institutions to detect fraudulent activities. It analyzes transaction and login data to identify suspicious patterns such as money muling, account takeover (ATO), velocity fraud, and location anomalies.
+
+This project simulates real-world fraud detection scenarios used in banking and financial systems.
 
 ---
 
